@@ -1,0 +1,3 @@
+interface DummyObject {
+    dummyField: string;
+}

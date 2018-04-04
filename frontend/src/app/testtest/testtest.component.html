@@ -1,0 +1,6 @@
+<div>
+    <p>backend call result:</p>
+    <p *ngFor="let dummy of dummies$ | async" class="column is-one-quarter">
+        {{ dummy.dummyField }}
+    </p>
+</div>
