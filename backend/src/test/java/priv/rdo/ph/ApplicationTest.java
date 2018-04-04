@@ -1,4 +1,4 @@
-package priv.rdo.propellerhead;
+package priv.rdo.ph;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

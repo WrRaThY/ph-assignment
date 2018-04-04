@@ -1,4 +1,4 @@
-package priv.rdo.propellerhead;
+package priv.rdo.ph;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

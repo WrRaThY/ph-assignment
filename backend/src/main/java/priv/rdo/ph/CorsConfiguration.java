@@ -1,4 +1,4 @@
-package priv.rdo.propellerhead;
+package priv.rdo.ph;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

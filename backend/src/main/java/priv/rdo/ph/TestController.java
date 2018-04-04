@@ -1,4 +1,4 @@
-package priv.rdo.propellerhead;
+package priv.rdo.ph;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
