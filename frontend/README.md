@@ -11,10 +11,9 @@ I thought about React, but chose not to go with it because:
 - TS/Angular IntelliJ IDEA support seems to be better
 
 I thought about using good, old JSPs or Faces, but lets be honest - where is the fun in that? :)  
-Since I'm spending my private on it I can learn something new along the way - hence Angular5.  
+Since I'm spending my private time on it I can learn something new along the way - hence Angular5.  
 
-I also used [Angular CLI](https://github.com/angular/angular-cli), which makes setting up a project like this one a pleasure.  
-THANK YOU. Without projects like Angular CLI setting this up would take days!  
+I also used [Angular CLI](https://github.com/angular/angular-cli), which makes setting up a project like this one a pleasure.    
 This short documentation also uses what was generated with Angular CLI.
 
 

@@ -31,3 +31,18 @@ each module has its own `README.MD` file that describes:
 ## General comments
 I'll try to make a comment here whenever I make a shortcut as a result of a tight deadline.
  
+* Tests - the service is so simple, that writing a whole battery of tests would be an overkill.  
+If you want to see that I can write them - please visit one of those repositories: [one][cli-rpg-test], [two][trade-validator-test]  
+Here I provided only some simple integration tests, which just help me develop faster.  
+* Model - db / view models are the same, so there was no point in separating them, hence the model is very simplistic. Maybe even too much sometimes... For a more complicated 
+app I couldn't do that.  
+* HATEOAS - Might be helpful in some cases, but it's not worth exploring here. Especially, becase the description does not provide any information about a state machine based on 
+statuses. One can change statuses without any additional rules.  
+* Paging/sorting - since it's a simple test app - there is no paging and sorting is done on the client side. For a real system - it would have be analyzed and a proper solution 
+chosen.  
+* Error handling - there is not to much to do here, so I just placed one `orElseThrow(...)` and cought it in an `ExceptionHandler` just to show I know how. Other possibility 
+would be to return a `ResponseEntity` with a proper code.    
+* Monitoring, Logging, API Documentation - more info in `backend/README.md`
+
+[cli-rpg-test]: https://github.com/WrRaThY/cli-rpg/tree/master/src/test/java/priv/rdo/rpg  
+[trade-validator-test]: https://github.com/WrRaThY/trade-validator/tree/master/src/test  
