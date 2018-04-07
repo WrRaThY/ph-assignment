@@ -1,0 +1,53 @@
+.sticky-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.main {
+    margin-top: 60px;
+}
+
+.navbar-item {
+    display: flex;
+}
+
+.navbar,
+.navbar-menu,
+.navbar-start,
+.navbar-end {
+    align-items: stretch;
+    display: flex;
+    padding: 0;
+    background-color: #363636;
+    color: whitesmoke;
+}
+
+.navbar-menu{
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+.navbar-start{
+    justify-content: flex-start;
+    margin-right: auto;
+}
+.navbar-end{
+    justify-content: flex-end;
+    margin-left: auto;
+}
+
+.navbar .container {
+    display: flex;
+}
+.navbar-item {
+    display: flex;
+    align-items: center;
+    background-color: #363636;
+    color: whitesmoke;
+}
+
+.footer {
+    margin-top: 20px;
+    padding: 10px;
+}
