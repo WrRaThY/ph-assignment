@@ -1,3 +1,0 @@
-interface DummyObject {
-    dummyField: string;
-}
