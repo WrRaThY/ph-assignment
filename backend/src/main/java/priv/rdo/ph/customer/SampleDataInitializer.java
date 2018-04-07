@@ -9,6 +9,7 @@ import priv.rdo.ph.customer.model.Address;
 import priv.rdo.ph.customer.model.Customer;
 import priv.rdo.ph.customer.model.PersonalInformation;
 
+import java.util.Random;
 import java.util.stream.IntStream;
 
 import static priv.rdo.ph.common.TimeProvider.nowAsStringPlusMinutes;
@@ -17,10 +18,15 @@ import static priv.rdo.ph.common.TimeProvider.nowAsStringPlusMinutes;
 class SampleDataInitializer {
     private static final XLogger LOG = XLoggerFactory.getXLogger(SampleDataInitializer.class);
 
+    private static final String[] firstnames = {"Lando", "Luke", "Obi Wan", "Han", "Leia", "Padme", "Admiral"};
+    private static final String[] lastnames = {"Calrissian", "Skywalker", "Kenobi", "Solo", "Organa", "Amidala", "Ackbar"};
+
     private final CustomersRepository customersRepository;
+    private final Random random;
 
     SampleDataInitializer(CustomersRepository customersRepository) {
         this.customersRepository = customersRepository;
+        random = new Random();
     }
 
     @EventListener(ApplicationReadyEvent.class)
@@ -40,9 +46,9 @@ class SampleDataInitializer {
     private Customer buildSampleCustomer(int customerNumber) {
         return Customer.of(
                         new PersonalInformation(
-                                "TestFirstName" + customerNumber,
-                                "TestLastName" + customerNumber,
-                                20 + customerNumber
+                                firstnames[random.nextInt(firstnames.length - 1)],
+                                lastnames[random.nextInt(lastnames.length - 1)],
+                                20 + random.nextInt(40)
                         ),
                         new Address(
                                 "New Zealand",
@@ -51,7 +57,7 @@ class SampleDataInitializer {
                                 "34",
                                 String.valueOf(customerNumber)
                         ),
-                        nowAsStringPlusMinutes(customerNumber)
+                        nowAsStringPlusMinutes(-customerNumber)
                 );
     }
 }
