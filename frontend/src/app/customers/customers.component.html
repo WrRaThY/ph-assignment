@@ -1,19 +1,60 @@
 <div *ngIf="customers != null; else loading">
-    <div class="search-query">
-        <label>
-            <input name="firstnameOrLastnameSearch" [(ngModel)]="firstnameOrLastnameSearch"
-                   #queryRef="ngModel"
-                   type="search"
-                   class="input"
-                   required
-                   minlength="1"
-                   placeholder="Search by firstname or lastname"
+    <div class="field has-addons">
+        <label class="control is-expanded">
+            <input
+                name="firstnameOrLastnameSearch"
+                [(ngModel)]="firstnameOrLastnameSearch"
+                #queryRef="ngModel"
+                type="search"
+                class="input"
+                required
+                minlength="1"
+                placeholder="Search by firstname or lastname"
             >
         </label>
-    </div>
 
+        <div class="field">
+            <div class="control has-icons-left">
+                <div class="select">
+                    <select
+                        name="sortByWhat"
+                        [(ngModel)]="sortByWhat"
+                        #queryRef="ngModel"
+                        title="Sort by..."
+                    >
+                        <option>{{sortTypes.STATUS}}</option>
+                        <option>{{sortTypes.FIRST_NAME}}</option>
+                        <option>{{sortTypes.LAST_NAME}}</option>
+                        <option>{{sortTypes.AGE}}</option>
+                    </select>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-sort-alpha-asc"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control has-icons-left">
+                <div class="select">
+                    <select
+                        name="sortDirection"
+                        [(ngModel)]="sortDirection"
+                        #queryRef="ngModel"
+                        title="Sort direction..."
+                    >
+                        <option>{{sortDirections.ASC}}</option>
+                        <option>{{sortDirections.DESC}}</option>
+                    </select>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-sort-alpha-asc"></i>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="columns is-multiline">
-        <ph-customer-general-view *ngFor="let customer of customers | filterByFirstnameAndLastname : firstnameOrLastnameSearch"
+        <ph-customer-general-view *ngFor="let customer of customers | filterByFirstnameAndLastname : firstnameOrLastnameSearch | sortBy : [sortByWhat, sortDirection]"
                                   [customer]="customer" class="column is-one-third">
             <a class="button is-primary is-loading">Loading</a>
         </ph-customer-general-view>

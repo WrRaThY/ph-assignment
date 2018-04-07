@@ -6,13 +6,13 @@ import {Customer} from "../customers.models";
 })
 
 export class FilterByFirstnameAndLastnamePipe implements PipeTransform {
-    transform(items: Customer[], searchText: string): Customer[] {
-        if (!items) return [];
-        if (!searchText) return items;
+    transform(customers: Customer[], searchText: string): Customer[] {
+        if (!customers) return [];
+        if (!searchText) return customers;
 
         searchText = searchText.toLowerCase();
 
-        return items
+        return customers
             .filter(it => {
                     return this.fullName(it).toLowerCase().includes(searchText);
                 }

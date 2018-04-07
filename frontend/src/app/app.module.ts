@@ -12,6 +12,7 @@ import {CustomersService} from "./customers/customers.service";
 import {CustomerDetailsViewComponent} from './customers/customer-details-view/customer-details-view.component';
 import {CustomerNotesComponent} from './customers/customer-notes/customer-notes.component';
 import {FilterByFirstnameAndLastnamePipe} from "./customers/pipes/FilterByFirstnameAndLastnamePipe";
+import {SortByPipe} from "./customers/pipes/SortByPipe";
 import {FormsModule} from "@angular/forms";
 import {LoadingComponent} from './common/loading/loading.component';
 import {ErrorHandlerService} from "./common/util/error-handler.service";
@@ -30,6 +31,7 @@ import {ViewNoteComponent} from './customers/customer-notes/view-note/view-note.
         CustomerDetailsViewComponent,
         CustomerNotesComponent,
         FilterByFirstnameAndLastnamePipe,
+        SortByPipe,
         LoadingComponent,
         FullNameWithStatusComponent,
         NewNoteComponent,

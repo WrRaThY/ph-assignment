@@ -1,9 +1,7 @@
 <div class="card">
-    <div class="card-header-icon">
-        <i title="A placeholder for user avatar" class="fa fa-user fa-3x"></i>
-    </div>
     <div class="card-content">
-        <p class="subtitle">{{ customer.personalInfo.firstname }} {{ customer.personalInfo.lastname }}</p>
+        <!--<p class="subtitle">{{ customer.personalInfo.firstname }} {{ customer.personalInfo.lastname }}</p>-->
+        <ph-full-name-with-status class="" [customer]="customer"></ph-full-name-with-status>
     </div>
     <footer class="card-footer">
         <p class="card-footer-item">
