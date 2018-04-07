@@ -35,7 +35,7 @@
         <footer class="modal-card-foot">
             <button *ngIf="isReadOnly == false" class="button is-success" (click)="saveNote()">Save note</button>
             <button *ngIf="isReadOnly == true" class="button is-warning" (click)="editNote()">Edit note</button>
-            <button class="button is-danger" (click)="deleteNote()">Delete note</button>
+            <button *ngIf="note.id != null" class="button is-danger" (click)="deleteNote()">Delete note</button>
             <button class="button" (click)="closeNote()">Cancel</button>
         </footer>
     </div>
