@@ -4,8 +4,9 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.TypeAlias;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 import static priv.rdo.ph.common.IdProvider.id;
 import static priv.rdo.ph.common.TimeProvider.nowAsString;
@@ -21,9 +22,9 @@ public class Customer {
 
     private final String creationTimestamp;
 
-    private final Map<String, Note> notes;
+    private final List<Note> notes;
 
-    private Customer(String id, CustomerStatus status, PersonalInformation personalInfo, Address address, String creationTimestamp, Map<String, Note> notes) {
+    private Customer(String id, CustomerStatus status, PersonalInformation personalInfo, Address address, String creationTimestamp, List<Note> notes) {
         this.id = id;
         this.status = status;
         this.personalInfo = personalInfo;
@@ -33,7 +34,7 @@ public class Customer {
     }
 
     public static Customer of(PersonalInformation personalInfo, Address address, String creationTimestamp) {
-        return new Customer(id(), CustomerStatus.PROSPECTIVE, personalInfo, address, creationTimestamp, new HashMap<>());
+        return new Customer(id(), CustomerStatus.PROSPECTIVE, personalInfo, address, creationTimestamp, new ArrayList<>());
     }
 
     public static Customer of(PersonalInformation personalInfo, Address address) {
@@ -51,17 +52,18 @@ public class Customer {
     }
 
     public Customer addNote(Note note) {
-        notes.put(note.getId(), note);
+        notes.add(note);
         return this;
     }
 
-    public Customer addNotes(Map<String, Note> notes) {
-        this.notes.putAll(notes);
+    public Customer addNotes(List<Note> notes) {
+        this.notes.addAll(notes);
         return this;
     }
 
     public Customer removeNote(String noteId) {
-        notes.remove(noteId);
+        Optional<Note> noteToBeDeleted = notes.stream().filter(note -> note.getId().equals(noteId)).findFirst();
+        noteToBeDeleted.ifPresent(notes::remove);
         return this;
     }
 
@@ -81,7 +83,7 @@ public class Customer {
         return address;
     }
 
-    public Map<String, Note> getNotes() {
+    public List<Note> getNotes() {
         return notes;
     }
 

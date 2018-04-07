@@ -27,7 +27,7 @@ class SampleDataInitializer {
     public void init() {
         LOG.entry();
 
-        addCustomers(5);
+        addCustomers(7);
 
         LOG.exit();
     }

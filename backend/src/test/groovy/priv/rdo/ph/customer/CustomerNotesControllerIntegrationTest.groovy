@@ -1,6 +1,7 @@
 package priv.rdo.ph.customer
 
 import org.hamcrest.CoreMatchers
+import org.hamcrest.Matchers
 import org.springframework.beans.factory.annotation.Autowired
 import priv.rdo.ph.IntegrationTestBase
 import priv.rdo.ph.customer.model.Customer
@@ -40,7 +41,7 @@ class CustomerNotesControllerIntegrationTest extends IntegrationTestBase {
                     .assertThat()
                     .statusCode(200)
                     .body("id", CoreMatchers.is(customer.id))
-                    .body("notes.${note.id}.title", CoreMatchers.containsString(note.title))
+                    .body("notes[0].title", CoreMatchers.containsString(note.title))
     }
 
     def "should remove a note from an existing customer"() {
@@ -63,10 +64,10 @@ class CustomerNotesControllerIntegrationTest extends IntegrationTestBase {
                     .assertThat()
                     .statusCode(200)
                     .body("id", CoreMatchers.is(customer.id))
-                    .body("notes", CoreMatchers.is(new HashMap()))
+                    .body("notes", Matchers.emptyIterable())
     }
 
-    def "should not do anything special if noteId was wrong"() {
+    def "should not do anything special if noteId in the DELETE operation was wrong"() {
         given:
             Note note = NoteBuilder.aNote().build()
             Customer customer = customersRepository.save(aCustomer().withNote(note).build())
@@ -86,6 +87,6 @@ class CustomerNotesControllerIntegrationTest extends IntegrationTestBase {
                     .assertThat()
                     .statusCode(200)
                     .body("id", CoreMatchers.is(customer.id))
-                    .body("notes.${note.id}.title", CoreMatchers.containsString(note.title))
+                    .body("notes[0].title", CoreMatchers.containsString(note.title))
     }
 }

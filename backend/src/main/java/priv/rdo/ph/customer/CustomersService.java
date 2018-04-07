@@ -41,12 +41,12 @@ class CustomersService {
         return customersRepository.findAll();
     }
 
-    void updateStatus(String id, CustomerStatus newStatus) {
+    Customer updateStatus(String id, CustomerStatus newStatus) {
         LOG.entry(id, newStatus);
 
         Customer customer = findById(id);
 
-        customersRepository.save(customer.updateStatus(newStatus));
+        return customersRepository.save(customer.updateStatus(newStatus));
     }
 
     void addNote(String id, Note note) {

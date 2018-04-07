@@ -13,7 +13,7 @@ import priv.rdo.ph.customer.model.Customer;
 import priv.rdo.ph.customer.model.Note;
 
 import javax.validation.Valid;
-import java.util.Map;
+import java.util.List;
 
 @RestController
 @RequestMapping("customers/{id}/notes")
@@ -27,7 +27,7 @@ class CustomerNotesController {
     }
 
     @GetMapping
-    Map<String, Note> listAllNotes(@PathVariable String id) {
+    List<Note> listAllNotes(@PathVariable String id) {
         LOG.entry(id);
 
         return customersService.findById(id).getNotes();

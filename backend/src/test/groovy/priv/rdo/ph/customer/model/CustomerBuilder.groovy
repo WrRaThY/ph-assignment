@@ -6,7 +6,7 @@ final class CustomerBuilder {
     private PersonalInformation personalInfo = PersonalInformationBuilder.aPersonalInformation().build()
     private Address address = AddressBuilder.anAddress().build()
     private String creationTimestamp = nowAsString()
-    private Map<String, Note> notes = new HashMap<>()
+    private List<Note> notes = new ArrayList<>()
 
     private CustomerBuilder() {
     }
@@ -31,7 +31,7 @@ final class CustomerBuilder {
     }
 
     CustomerBuilder withNote(Note note) {
-        this.notes.put(note.id, note)
+        this.notes.add(note)
         return this
     }
 

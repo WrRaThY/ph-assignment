@@ -4,7 +4,10 @@ import javax.validation.constraints.NotNull;
 
 public class StatusUpdateRequest {
     @NotNull
-    private final CustomerStatus newStatus;
+    private CustomerStatus newStatus;
+
+    private StatusUpdateRequest() {
+    }
 
     StatusUpdateRequest(CustomerStatus newStatus) {
         this.newStatus = newStatus;
