@@ -1,0 +1,26 @@
+<div class="card">
+    <div class="card-header-icon">
+        <i title="A placeholder for user avatar" class="fa fa-user fa-3x"></i>
+    </div>
+    <div class="card-content">
+        <p class="subtitle">{{ customer.personalInfo.firstname }} {{ customer.personalInfo.lastname }}</p>
+    </div>
+    <footer class="card-footer">
+        <p class="card-footer-item">
+            <button class="button is-link" routerLink="{{customer.id}}">
+                <span class="icon icon-padding">
+                    <i class="fa fa-info-circle"></i>
+                </span>
+                Details
+            </button>
+        </p>
+        <p class="card-footer-item">
+            <button class="button is-link" routerLink="{{customer.id}}/notes">
+                <span class="icon icon-padding">
+                    <i class="fa fa-sticky-note"></i>
+                </span>
+                Notes
+            </button>
+        </p>
+    </footer>
+</div>

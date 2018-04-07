@@ -1,0 +1,93 @@
+<div *ngIf="customer != null; else loading">
+    <div class="tile is-ancestor custom-center">
+        <div class="tile is-vertical is-5">
+            <div class="tile">
+                <div class="tile is-parent is-vertical">
+                    <ph-full-name-with-status class="tile is-child" [customer]="customer"></ph-full-name-with-status>
+                    <article class="tile is-child notification fix-tile-padding">
+                        <p class="title smaller-title">Change status</p>
+                        <div class="buttons">
+                            <button class="button is-success" (click)="selectStatus(customerStatus.CURRENT)">{{ customerStatus.CURRENT }}</button>
+                            <button class="button is-info" (click)="selectStatus(customerStatus.PROSPECTIVE)">{{ customerStatus.PROSPECTIVE }}</button>
+                            <button class="button is-danger" (click)="selectStatus(customerStatus.NON_ACTIVE)">{{ customerStatus.NON_ACTIVE }}</button>
+                        </div>
+                    </article>
+                    <article class="tile is-child notification fix-tile-padding fix-height">
+                        <button class="button is-link" routerLink="notes">
+                            <span class="icon icon-padding">
+                                <i class="fa fa-sticky-note"></i>
+                            </span>
+                            Notes
+                        </button>
+                    </article>
+                </div>
+            </div>
+        </div>
+        <div class="tile is-parent">
+            <article class="tile is-child notification fix-tile-padding">
+                <div class="content">
+                    <p class="title">Personal Information</p>
+
+                    <div class="card">
+                        <header class="card-header">
+                            <p class="card-header-title">General</p>
+                        </header>
+                        <div class="card-content small-padding">
+                            <table class="table is-hoverable is-fullwidth is-striped">
+                                <tbody>
+                                    <tr>
+                                        <th>ID</th>
+                                        <td class="addr-data">{{ customer.id }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Age</th>
+                                        <td class="addr-data">{{ customer.personalInfo.age }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Creation Timestamp</th>
+                                        <td class="addr-data">{{ customer.creationTimestamp }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <header class="card-header">
+                            <p class="card-header-title">Address</p>
+                        </header>
+                        <div class="card-content small-padding">
+                            <table class="table is-hoverable is-fullwidth is-striped">
+                                <tbody>
+                                    <tr>
+                                        <th>Country</th>
+                                        <td class="addr-data">{{ customer.address.country }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>City</th>
+                                        <td class="addr-data">{{ customer.address.city }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Street</th>
+                                        <td class="addr-data">{{ customer.address.street }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Street Number</th>
+                                        <td class="addr-data">{{ customer.address.buildingNumber }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Flat Number</th>
+                                        <td class="addr-data">{{ customer.address.flatNumber }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+<ng-template #loading>
+    <ph-loading></ph-loading>
+</ng-template>

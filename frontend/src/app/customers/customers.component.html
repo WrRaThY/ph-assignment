@@ -1,0 +1,24 @@
+<div *ngIf="customers != null; else loading">
+    <div class="search-query">
+        <label>
+            <input name="firstnameOrLastnameSearch" [(ngModel)]="firstnameOrLastnameSearch"
+                   #queryRef="ngModel"
+                   type="search"
+                   class="input"
+                   required
+                   minlength="1"
+                   placeholder="Search by firstname or lastname"
+            >
+        </label>
+    </div>
+
+    <div class="columns is-multiline">
+        <ph-customer-general-view *ngFor="let customer of customers | filterByFirstnameAndLastname : firstnameOrLastnameSearch"
+                                  [customer]="customer" class="column is-one-third">
+            <a class="button is-primary is-loading">Loading</a>
+        </ph-customer-general-view>
+    </div>
+</div>
+<ng-template #loading>
+    <ph-loading></ph-loading>
+</ng-template>

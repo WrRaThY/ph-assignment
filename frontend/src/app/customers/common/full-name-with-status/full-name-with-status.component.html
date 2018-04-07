@@ -1,0 +1,10 @@
+<article class="tile is-child notification"
+         [class.is-info]="customerStatus.PROSPECTIVE == customer.status"
+         [class.is-success]="customerStatus.CURRENT == customer.status"
+         [class.is-danger]="customerStatus.NON_ACTIVE == customer.status"
+>
+    <p class="title bigger-title">
+        {{ customer.personalInfo.firstname }} {{ customer.personalInfo.lastname }}
+    </p>
+    <p>Current status: {{customer.status}}</p>
+</article>

@@ -1,21 +1,23 @@
 # PH Assignment - frontend
 
 ## Technologies used
-I've chosen Angular5, because it's the latest, stable version of this framework.  
+* I've chosen Angular5, because it's the latest, stable version of this framework.  
 I have some production experience with AngularJS and gone over tutorials in Angular 2, 4 and 5, so this sounds like a safe choice  
 
-I thought about React, but chose not to go with it because:  
-- I have just a couple of days of experience with it
-- I really enjoy writing in TypeScript
-- `Angular CLI` is a better tool than `create-react-app`
-- TS/Angular IntelliJ IDEA support seems to be better
+* I thought about React, but chose not to go with it because:  
+  * I have just a couple of days of experience with it
+  * I really enjoy writing in TypeScript
+  * `Angular CLI` is a better tool than `create-react-app`
+  * TS/Angular IntelliJ IDEA support seems to be better
 
-I thought about using good, old JSPs or Faces, but lets be honest - where is the fun in that? :)  
+* I thought about using good, old JSPs or Faces, but lets be honest - where is the fun in that? :)  
 Since I'm spending my private time on it I can learn something new along the way - hence Angular5.  
 
-I also used [Angular CLI](https://github.com/angular/angular-cli), which makes setting up a project like this one a pleasure.    
+* I also used [Angular CLI](https://github.com/angular/angular-cli), which makes setting up a project like this one a pleasure.    
 This short documentation also uses what was generated with Angular CLI.
 
+* [Bulma](https://bulma.io/) helped me with styling, because Boostrap is just everywhere and I wanted to learn something new.  
+The design even follows RWD rules. Mostly... :) 
 
 ## Development server
 Run `ng serve` for a dev server.  

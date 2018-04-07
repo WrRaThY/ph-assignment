@@ -1,0 +1,25 @@
+.custom-center {
+    margin: auto;
+    padding: 10px;
+    @media screen and (min-width: 800px) {
+        width: 70%;
+    }
+}
+
+.button {
+    display: block;
+    width: 100%;
+    margin-right: 0;
+}
+
+.button:not(:last-child) {
+    margin-right: 0;
+}
+
+.fix-tile-padding {
+    padding-right: 24px
+}
+
+.fix-height {
+    max-height: max-content;
+}

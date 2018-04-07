@@ -1,0 +1,35 @@
+<div class="modal-background"></div>
+<div class="modal-card">
+    <header class="modal-card-head">
+        <p class="modal-card-title">New note</p>
+        <button class="delete" aria-label="close" (click)="closeNote()"></button>
+    </header>
+    <section class="modal-card-body">
+        <label>
+            <input
+                name="title"
+                [(ngModel)]="note.title"
+                #queryRef="ngModel"
+                type="text"
+                class="input is-medium is-hoverable"
+                required
+                minlength="4"
+                placeholder="Title"
+            />
+        </label>
+        <textarea
+            title="content"
+            [(ngModel)]="note.content"
+            #queryRef="ngModel"
+            type="text"
+            class="textarea is-hovered"
+            required
+            minlength="10"
+            placeholder="Write your note here :)"
+        ></textarea>
+    </section>
+    <footer class="modal-card-foot">
+        <button class="button is-success" (click)="saveNote()">Save note</button>
+        <button class="button" (click)="closeNote()">Cancel</button>
+    </footer>
+</div>

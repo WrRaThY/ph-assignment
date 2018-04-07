@@ -1,0 +1,63 @@
+<div *ngIf="customer != null; else loading">
+    <div class="tile is-ancestor is-8 custom-center">
+        <div class="tile is-vertical is-5">
+            <div class="tile">
+                <div class="tile is-parent is-vertical">
+                    <ph-full-name-with-status class="tile is-child" [customer]="customer"></ph-full-name-with-status>
+
+                    <article class="tile is-child notification fix-tile-padding">
+                        <p class="title smaller-title">Note actions</p>
+                        <div class="buttons">
+                            <button class="button is-success" (click)="newNote()">New Note</button>
+                        </div>
+                    </article>
+
+                    <article class="tile is-child notification fix-tile-padding">
+                        <button class="button is-link" routerLink="../">
+                            <span class="icon icon-padding">
+                                <i class="fa fa-user"></i>
+                            </span>
+                            Customer details
+                        </button>
+                    </article>
+                </div>
+            </div>
+        </div>
+        <div class="tile is-parent">
+            <article class="tile is-child notification">
+                <div class="content">
+                    <p class="title">Notes</p>
+                    <div class="content" *ngIf="customer.notes.length != 0; else noNotes">
+                        <table class="table is-fullwidth is-hoverable is-striped">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Content preview</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let note of customer.notes" (click)="viewNote(note)">
+                                    <th>{{note.title}}</th>
+                                    <td>{{note.content.substring(0, 20)}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <ng-template #noNotes>
+                        <p class="subtitle">There are no notes for this customer</p>
+                        <p class="subtitle">feel free to add one!</p>
+                    </ng-template>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+<ng-template #loading>
+    <ph-loading></ph-loading>
+</ng-template>
+<div class="modal" [class.is-active]="showNewNote">
+    <ph-new-note (onClose)="closeNewNote()" (onSave)="saveNote($event)"></ph-new-note>
+</div>
+<div class="modal" [class.is-active]="showViewNote">
+    <ph-view-note [note]="selectedNote" (onClose)="closeViewNote()" (onDelete)="removeNote($event)"></ph-view-note>
+</div>
