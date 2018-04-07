@@ -28,10 +28,7 @@ export class CustomerNotesComponent implements OnInit {
 
     newNote() {
         this.showNewNote = true;
-    }
-
-    closeNewNote() {
-        this.showNewNote = false;
+        this.selectedNote = new Note();
     }
 
     viewNote(note: Note) {
@@ -39,17 +36,22 @@ export class CustomerNotesComponent implements OnInit {
         this.showViewNote = true;
     }
 
-    closeViewNote() {
-        this.showViewNote = false;
-    }
+    saveNote(note: Note, editExisting: boolean = false) {
+        if (editExisting){
+            this.customersService.editNote(this.customer.id, note)
+                .subscribe(
+                    () => this.findById(this.customer.id),
+                    error => this.errorHandler.handleHttpError(error)
+                );
+        } else {
+            this.customersService.addNote(this.customer.id, note)
+                .subscribe(
+                    () => this.findById(this.customer.id),
+                    error => this.errorHandler.handleHttpError(error)
+                );
+        }
 
-    saveNote(note: Note) {
-        this.customersService.addNote(this.customer.id, note)
-            .subscribe(
-                () => this.findById(this.customer.id),
-                error => this.errorHandler.handleHttpError(error)
-            );
-        this.showNewNote = false;
+        this.hideNotes();
     }
 
     removeNote(note: Note) {
@@ -58,7 +60,7 @@ export class CustomerNotesComponent implements OnInit {
                 () => this.findById(this.customer.id),
                 error => this.errorHandler.handleHttpError(error)
             );
-        this.showViewNote = false;
+        this.hideNotes();
     }
 
     private findById(id) {
@@ -67,6 +69,11 @@ export class CustomerNotesComponent implements OnInit {
                 success => this.customer = success,
                 error => this.errorHandler.handleHttpError(error)
             )
+    }
+
+    hideNotes() {
+        this.showNewNote = false;
+        this.showViewNote = false;
     }
 
 }

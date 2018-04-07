@@ -36,4 +36,9 @@ export class CustomersService {
         const url = `${environment.url}/${customerId}/notes/${noteId}`;
         return this.http.delete<Customer>(url)
     }
+
+    editNote(customerId: string, note: Note): Observable<any> {
+        const url = `${environment.url}/${customerId}/notes/${note.id}`;
+        return this.http.put<Customer>(url, note)
+    }
 }

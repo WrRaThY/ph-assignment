@@ -56,8 +56,8 @@
     <ph-loading></ph-loading>
 </ng-template>
 <div class="modal" [class.is-active]="showNewNote">
-    <ph-new-note (onClose)="closeNewNote()" (onSave)="saveNote($event)"></ph-new-note>
+    <ph-view-note [note]="selectedNote" [isReadOnly]="false" (onClose)="hideNotes()" (onSave)="saveNote($event)" (onDelete)="removeNote($event)"></ph-view-note>
 </div>
 <div class="modal" [class.is-active]="showViewNote">
-    <ph-view-note [note]="selectedNote" (onClose)="closeViewNote()" (onDelete)="removeNote($event)"></ph-view-note>
+    <ph-view-note [note]="selectedNote" (onClose)="hideNotes()" (onSave)="saveNote($event, true)" (onDelete)="removeNote($event)"></ph-view-note>
 </div>

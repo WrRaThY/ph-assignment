@@ -10,6 +10,9 @@ export class ViewNoteComponent implements OnInit {
     @Input() protected note: Note;
     @Output() onClose: EventEmitter<any> = new EventEmitter<any>();
     @Output() onDelete: EventEmitter<Note> = new EventEmitter<Note>();
+    @Output() onSave: EventEmitter<Note> = new EventEmitter<Note>();
+
+    @Input() isReadOnly: boolean = true;
 
     constructor() {
     }
@@ -25,6 +28,15 @@ export class ViewNoteComponent implements OnInit {
     deleteNote() {
         this.onDelete.emit(this.note);
         this.note = new Note();
+    }
+
+    saveNote() {
+        this.onSave.emit(this.note);
+        this.note = new Note();
+    }
+
+    editNote() {
+        this.isReadOnly = false;
     }
 
 }

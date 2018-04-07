@@ -17,7 +17,6 @@ import {FormsModule} from "@angular/forms";
 import {LoadingComponent} from './common/loading/loading.component';
 import {ErrorHandlerService} from "./common/util/error-handler.service";
 import {FullNameWithStatusComponent} from './customers/common/full-name-with-status/full-name-with-status.component';
-import {NewNoteComponent} from './customers/customer-notes/new-note/new-note.component';
 import {ViewNoteComponent} from './customers/customer-notes/view-note/view-note.component';
 
 
@@ -34,8 +33,7 @@ import {ViewNoteComponent} from './customers/customer-notes/view-note/view-note.
         SortByPipe,
         LoadingComponent,
         FullNameWithStatusComponent,
-        NewNoteComponent,
-        ViewNoteComponent
+        ViewNoteComponent,
     ],
     imports: [
         BrowserModule,

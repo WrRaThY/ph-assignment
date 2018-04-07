@@ -16,7 +16,7 @@
                     required
                     minlength="4"
                     placeholder="Title"
-                    readonly
+                    [readonly]="isReadOnly"
                 />
             </label>
             <textarea
@@ -28,11 +28,14 @@
                 required
                 minlength="10"
                 placeholder="Write your note here :)"
-                readonly
+                [readonly]="isReadOnly"
             ></textarea>
         </section>
+
         <footer class="modal-card-foot">
-            <button class="button is-warning" (click)="deleteNote()">Delete note</button>
+            <button *ngIf="isReadOnly == false" class="button is-success" (click)="saveNote()">Save note</button>
+            <button *ngIf="isReadOnly == true" class="button is-warning" (click)="editNote()">Edit note</button>
+            <button class="button is-danger" (click)="deleteNote()">Delete note</button>
             <button class="button" (click)="closeNote()">Cancel</button>
         </footer>
     </div>
