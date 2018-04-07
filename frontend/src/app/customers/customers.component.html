@@ -54,8 +54,12 @@
         </div>
     </div>
     <div class="columns is-multiline">
-        <ph-customer-general-view *ngFor="let customer of customers | filterByFirstnameAndLastname : firstnameOrLastnameSearch | sortBy : [sortByWhat, sortDirection]"
-                                  [customer]="customer" class="column is-one-third">
+        <ph-customer-general-view
+            *ngFor="let customer of customers | filterByFirstnameAndLastname : firstnameOrLastnameSearch | sortBy : [sortByWhat, sortDirection]"
+            [customer]="customer"
+            (onDelete)="deleteCustomer($event)"
+            class="column is-one-third"
+        >
             <a class="button is-primary is-loading">Loading</a>
         </ph-customer-general-view>
     </div>

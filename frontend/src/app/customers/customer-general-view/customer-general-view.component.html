@@ -1,7 +1,9 @@
 <div class="card">
     <div class="card-content">
         <!--<p class="subtitle">{{ customer.personalInfo.firstname }} {{ customer.personalInfo.lastname }}</p>-->
-        <ph-full-name-with-status class="" [customer]="customer"></ph-full-name-with-status>
+        <ph-full-name-with-status class="" [customer]="customer">
+            <button class="delete is-very-large delete-customer" aria-label="close" (click)="deleteCustomer()"></button>
+        </ph-full-name-with-status>
     </div>
     <footer class="card-footer">
         <p class="card-footer-item">

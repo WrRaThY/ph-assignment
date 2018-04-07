@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Customer} from "../customers.models";
 
 @Component({
@@ -8,10 +8,15 @@ import {Customer} from "../customers.models";
 })
 export class CustomerGeneralViewComponent implements OnInit {
     @Input() customer: Customer;
+    @Output() onDelete: EventEmitter<Customer> = new EventEmitter<Customer>();
 
     constructor() {
     }
 
     ngOnInit() {
+    }
+
+    deleteCustomer() {
+        this.onDelete.emit(this.customer)
     }
 }

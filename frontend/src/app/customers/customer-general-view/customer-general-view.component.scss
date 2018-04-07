@@ -3,3 +3,19 @@
 .icon-padding {
     padding-right: 10px
 }
+
+.delete-customer {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    background-color: rgba(233, 12, 0, 0.98);
+}
+
+.delete.is-very-large {
+    height: 40px;
+    max-height: 40px;
+    max-width: 40px;
+    min-height: 40px;
+    min-width: 40px;
+    width: 40px;
+}

@@ -31,6 +31,14 @@ export class CustomersComponent implements OnInit, AfterViewInit {
         this.findAllCustomers();
     }
 
+    deleteCustomer(customer: Customer) {
+        this.customersService.deleteCustomer(customer.id)
+            .subscribe(
+                () => this.findAllCustomers(),
+                error => this.errorHandler.handleHttpError(error)
+            )
+    }
+
     private findAllCustomers() {
         this.customersService.findAllCustomers()
             .subscribe(
