@@ -1,6 +1,7 @@
 package priv.rdo.ph.customer;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,5 +39,11 @@ class CustomersController {
     void updateStatus(@PathVariable String id,
                       @RequestBody @Valid StatusUpdateRequest request) {
         customersService.updateStatus(id, request.getNewStatus());
+    }
+
+    @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    void deleteCustomer(@PathVariable String id) {
+        customersService.deleteById(id);
     }
 }

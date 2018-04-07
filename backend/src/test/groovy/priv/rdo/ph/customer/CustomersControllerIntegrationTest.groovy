@@ -71,4 +71,26 @@ class CustomersControllerIntegrationTest extends IntegrationTestBase {
                     .statusCode(200)
                     .body("size()", CoreMatchers.is(2))
     }
+
+    def "should delete a customer by id"() {
+        given:
+            Customer customer = customersRepository.save(aCustomer().build())
+
+        and:
+            def request = given()
+                    .pathParam("id", customer.getId())
+
+        when:
+            def response = request.when()
+                    .delete("customers/{id}")
+
+        then:
+            response.then()
+                    .log().ifValidationFails()
+                    .assertThat()
+                    .statusCode(202)
+
+        and:
+            customersRepository.findById(customer.id).isPresent() == false
+    }
 }

@@ -72,4 +72,12 @@ class CustomersService {
 
         customersRepository.save(customer.editNote(noteId, note));
     }
+
+    void deleteById(String customerId) {
+        LOG.entry(customerId);
+
+        Customer customer = findById(customerId);
+
+        customersRepository.deleteById(customer.getId());
+    }
 }
