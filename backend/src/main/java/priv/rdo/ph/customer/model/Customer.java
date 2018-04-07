@@ -1,6 +1,7 @@
 package priv.rdo.ph.customer.model;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import lombok.Getter;
+import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.TypeAlias;
 
@@ -11,6 +12,8 @@ import java.util.Optional;
 import static priv.rdo.ph.common.IdProvider.id;
 import static priv.rdo.ph.common.TimeProvider.nowAsString;
 
+@Getter
+@ToString
 @TypeAlias("customer")
 public class Customer {
     @Id
@@ -74,42 +77,6 @@ public class Customer {
             }
         }
         return this;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public CustomerStatus getStatus() {
-        return status;
-    }
-
-    public PersonalInformation getPersonalInfo() {
-        return personalInfo;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public List<Note> getNotes() {
-        return notes;
-    }
-
-    public String getCreationTimestamp() {
-        return creationTimestamp;
-    }
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this)
-                .append("id", id)
-                .append("status", status)
-                .append("personalInfo", personalInfo)
-                .append("address", address)
-                .append("notes", notes)
-                .append("creationTimestamp", creationTimestamp)
-                .toString();
     }
 }
 

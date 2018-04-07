@@ -1,7 +1,5 @@
 package priv.rdo.ph.customer
 
-import org.hamcrest.CoreMatchers
-import org.hamcrest.Matchers
 import org.springframework.beans.factory.annotation.Autowired
 import priv.rdo.ph.IntegrationTestBase
 import priv.rdo.ph.customer.model.Customer
@@ -27,7 +25,7 @@ class CustomerNotesControllerIntegrationTest extends IntegrationTestBase {
 
         and:
             def request = given()
-                    .pathParam("id", customer.getId())
+                    .pathParam("id", customer.id)
                     .body(note)
                     .header(CONTENT_TYPE, APPLICATION_JSON_VALUE)
 
@@ -40,8 +38,10 @@ class CustomerNotesControllerIntegrationTest extends IntegrationTestBase {
                     .log().ifValidationFails()
                     .assertThat()
                     .statusCode(200)
-                    .body("id", CoreMatchers.is(customer.id))
-                    .body("notes[0].title", CoreMatchers.containsString(note.title))
+
+        and:
+            def foundCustomer = customersRepository.findById(customer.id).get()
+            foundCustomer.notes.size() == 1
     }
 
     def "should remove a note from an existing customer"() {
@@ -63,8 +63,10 @@ class CustomerNotesControllerIntegrationTest extends IntegrationTestBase {
                     .log().ifValidationFails()
                     .assertThat()
                     .statusCode(200)
-                    .body("id", CoreMatchers.is(customer.id))
-                    .body("notes", Matchers.emptyIterable())
+
+        and:
+            def foundCustomer = customersRepository.findById(customer.id).get()
+            foundCustomer.notes.size() == 0
     }
 
     def "should not do anything special if noteId in the DELETE operation was wrong"() {
@@ -86,7 +88,10 @@ class CustomerNotesControllerIntegrationTest extends IntegrationTestBase {
                     .log().ifValidationFails()
                     .assertThat()
                     .statusCode(200)
-                    .body("id", CoreMatchers.is(customer.id))
-                    .body("notes[0].title", CoreMatchers.containsString(note.title))
+
+        and:
+            def foundCustomer = customersRepository.findById(customer.id).get()
+            foundCustomer.notes.size() == 1
+            foundCustomer.notes[0].title == note.title
     }
 }
