@@ -64,4 +64,12 @@ class CustomersService {
 
         customersRepository.save(customer.removeNote(noteId));
     }
+
+    void editNote(String customerId, String noteId, Note note) {
+        LOG.entry(customerId, noteId, note);
+
+        Customer customer = findById(customerId);
+
+        customersRepository.save(customer.editNote(noteId, note));
+    }
 }

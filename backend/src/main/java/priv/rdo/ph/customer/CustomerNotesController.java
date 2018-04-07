@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import priv.rdo.ph.customer.model.Customer;
 import priv.rdo.ph.customer.model.Note;
 
 import javax.validation.Valid;
@@ -34,20 +34,25 @@ class CustomerNotesController {
     }
 
     @PostMapping
-    Customer addNote(@PathVariable String id, @RequestBody @Valid Note note) {
+    void addNote(@PathVariable String id, @RequestBody @Valid Note note) {
         LOG.entry(id, note);
 
         customersService.addNote(id, note);
-
-        return customersService.findById(id);
     }
 
     @DeleteMapping("{noteId}")
-    Customer removeNote(@PathVariable String id, @PathVariable String noteId) {
+    void removeNote(@PathVariable String id, @PathVariable String noteId) {
         LOG.entry(id, noteId);
 
         customersService.removeNote(id, noteId);
-
-        return customersService.findById(id);
     }
+
+    @PutMapping("{noteId}")
+    void editNote(@PathVariable String id, @PathVariable String noteId, @RequestBody @Valid Note note) {
+        LOG.entry(id, noteId);
+
+        customersService.editNote(id, noteId, note);
+    }
+
+
 }

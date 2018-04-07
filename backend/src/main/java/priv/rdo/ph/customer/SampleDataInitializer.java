@@ -18,8 +18,8 @@ import static priv.rdo.ph.common.TimeProvider.nowAsStringPlusMinutes;
 class SampleDataInitializer {
     private static final XLogger LOG = XLoggerFactory.getXLogger(SampleDataInitializer.class);
 
-    private static final String[] firstnames = {"Lando", "Luke", "Obi Wan", "Han", "Leia", "Padme", "Admiral"};
-    private static final String[] lastnames = {"Calrissian", "Skywalker", "Kenobi", "Solo", "Organa", "Amidala", "Ackbar"};
+    private static final String[] firstnames = {"Lando", "Luke", "Obi Wan", "Han", "Leia", "Padme", "Admiral", "Jar Jar"};
+    private static final String[] lastnames = {"Calrissian", "Skywalker", "Kenobi", "Solo", "Organa", "Amidala", "Ackbar", "Binks"};
 
     private final CustomersRepository customersRepository;
     private final Random random;
