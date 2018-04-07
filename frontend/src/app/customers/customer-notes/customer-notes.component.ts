@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterContentChecked, AfterViewChecked, Component, OnChanges, OnInit} from '@angular/core';
 import {CustomersService} from "../customers.service";
 import {Customer, Note} from "../customers.models";
 import {ErrorHandlerService} from "../../common/util/error-handler.service";
@@ -10,7 +10,7 @@ import {ActivatedRoute} from "@angular/router";
     styleUrls: ['./customer-notes.component.scss'],
     providers: [CustomersService]
 })
-export class CustomerNotesComponent implements OnInit {
+export class CustomerNotesComponent implements OnInit, AfterViewChecked {
     protected customer: Customer;
     protected showNewNote = false;
     protected showViewNote = false;
@@ -19,6 +19,16 @@ export class CustomerNotesComponent implements OnInit {
     constructor(private customersService: CustomersService,
                 private route: ActivatedRoute,
                 private errorHandler: ErrorHandlerService) {
+    }
+
+    ngAfterViewChecked(): void {
+        const notesMenu = document.getElementById('notes-menu');
+        const notesList = document.getElementById('notes-list');
+
+        if (notesMenu != null && notesList != null){
+            notesList.style.height = window.getComputedStyle(notesMenu).height
+        }
+
     }
 
     ngOnInit() {

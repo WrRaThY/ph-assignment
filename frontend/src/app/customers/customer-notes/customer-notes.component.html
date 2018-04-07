@@ -1,6 +1,6 @@
 <div *ngIf="customer != null; else loading">
     <div class="tile is-ancestor custom-center flex-align-parent">
-        <div class="tile is-vertical is-5">
+        <div id="notes-menu" class="tile is-vertical is-5">
             <div class="tile">
                 <div class="tile is-parent is-vertical">
                     <ph-full-name-with-status class="tile is-child" [customer]="customer"></ph-full-name-with-status>
@@ -23,8 +23,8 @@
                 </div>
             </div>
         </div>
-        <div class="tile is-parent">
-            <article class="tile is-child notification mobile-resize-table">
+        <div id="notes-list" class="tile is-parent">
+            <article class="tile is-child notification">
                 <div class="content">
                     <p class="title">Notes</p>
                     <div class="content" *ngIf="customer.notes.length != 0; else noNotes">
@@ -38,7 +38,8 @@
                             <tbody>
                                 <tr *ngFor="let note of customer.notes" (click)="viewNote(note)">
                                     <th>{{note.title}}</th>
-                                    <td *ngIf="note.content != null">{{note.content.substring(0, 20)}}</td>
+                                    <td *ngIf="note.content != null && note.content.length <= 20">{{note.content}}</td>
+                                    <td *ngIf="note.content != null && note.content.length > 20">{{note.content.substring(0, 20)}} ......</td>
                                     <td *ngIf="note.content == null"> </td>
                                 </tr>
                             </tbody>
