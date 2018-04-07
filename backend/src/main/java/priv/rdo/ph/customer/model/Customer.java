@@ -68,10 +68,9 @@ public class Customer {
     }
 
     public Customer editNote(String noteId, Note note) {
-        for (int i = 0; i < notes.size(); i++) {
-            Note tempNote = notes.get(i);
-            if (tempNote.getId().equals(noteId)) {
-                notes.set(i, note);
+        for (Note existingNote : notes) {
+            if (existingNote.getId().equals(noteId)) {
+                existingNote.updateNote(note);
             }
         }
         return this;

@@ -3,3 +3,13 @@
 tbody tr {
     cursor: pointer;
 }
+
+.flex-align-parent {
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-top {
+    align-self: flex-start;
+    width: 100%;
+}

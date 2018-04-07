@@ -33,7 +33,7 @@ class SampleDataInitializer {
     public void init() {
         LOG.entry();
 
-        addCustomers(7);
+        addCustomers(random.nextInt(4) + 7);
 
         LOG.exit();
     }

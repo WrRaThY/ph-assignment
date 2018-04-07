@@ -1,7 +1,11 @@
+$mobile-width: 960px;
+$medium-screen-width: 1200px;
+
 .custom-center {
     margin: auto;
     padding: 10px;
-    @media screen and (min-width: 800px) {
+
+    @media screen and (min-width: $medium-screen-width) {
         width: 70%;
     }
 }

@@ -12,7 +12,6 @@ public class Note {
     @NotBlank
     private String title;
 
-    @NotBlank
     private String content;
 
     private Note() {
@@ -22,6 +21,11 @@ public class Note {
     public Note(String title, String content) {
         this.title = title;
         this.content = content;
+    }
+
+    void updateNote(Note note) {
+        this.title = note.title;
+        this.content = note.content;
     }
 
     public String getId() {

@@ -1,18 +1,18 @@
 <div *ngIf="customer != null; else loading">
-    <div class="tile is-ancestor is-8 custom-center">
+    <div class="tile is-ancestor custom-center flex-align-parent">
         <div class="tile is-vertical is-5">
             <div class="tile">
                 <div class="tile is-parent is-vertical">
                     <ph-full-name-with-status class="tile is-child" [customer]="customer"></ph-full-name-with-status>
 
-                    <article class="tile is-child notification fix-tile-padding">
+                    <article class="tile is-child notification fix-tile-padding fix-height flex-top">
                         <p class="title smaller-title">Note actions</p>
                         <div class="buttons">
                             <button class="button is-success" (click)="newNote()">New Note</button>
                         </div>
                     </article>
 
-                    <article class="tile is-child notification fix-tile-padding">
+                    <article class="tile is-child notification fix-tile-padding fix-height">
                         <button class="button is-link" routerLink="../">
                             <span class="icon icon-padding">
                                 <i class="fa fa-user"></i>
@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="tile is-parent">
-            <article class="tile is-child notification">
+            <article class="tile is-child notification mobile-resize-table">
                 <div class="content">
                     <p class="title">Notes</p>
                     <div class="content" *ngIf="customer.notes.length != 0; else noNotes">
@@ -38,7 +38,8 @@
                             <tbody>
                                 <tr *ngFor="let note of customer.notes" (click)="viewNote(note)">
                                     <th>{{note.title}}</th>
-                                    <td>{{note.content.substring(0, 20)}}</td>
+                                    <td *ngIf="note.content != null">{{note.content.substring(0, 20)}}</td>
+                                    <td *ngIf="note.content == null"> </td>
                                 </tr>
                             </tbody>
                         </table>
